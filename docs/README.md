@@ -1,5 +1,38 @@
 # Student Account Management
 
+## Running the Node.js application
+
+The three COBOL programs are consolidated in [src/accounting/index.js](../src/accounting/index.js).
+Install Node.js 22 or newer, then run:
+
+```sh
+cd src/accounting
+npm install
+npm start
+```
+
+No third-party packages are required; the application uses Node.js built-in modules.
+Run the automated CLI tests with `npm test` from the same directory.
+In VS Code, select **Run Accounting Application** in Run and Debug and press F5.
+The launch configuration uses the integrated terminal so menu input works.
+
+The Node.js implementation follows the data flow below: select an operation, read
+the shared balance, calculate, and update it only for a successful transaction.
+It preserves all four menu options, messages, the initial `1000.00` balance, and
+process-local storage. Like COBOL, balance output is eight digits with an implied
+decimal point: `00100000` means `1000.00`. Zero-value transactions remain valid.
+Restarting the application resets the balance.
+
+Amounts are calculated in integer cents to avoid floating-point rounding errors.
+For previously undefined inputs, the approved modernization behavior is to reject
+negative or malformed values, amounts outside `0` through `999999.99`, and credits
+that would exceed `999999.99`, with an explicit message and no balance change.
+Enter amounts as one to six digits with an optional decimal point followed by one
+or two digits (for example, `25`, `25.7`, or `25.75`); surrounding whitespace is ignored.
+End of input exits cleanly and cancels any incomplete transaction.
+
+## Legacy COBOL reference
+
 This COBOL example demonstrates a simple account-management flow for a student account. It maintains one account balance and supports viewing the balance, adding a credit, and making a debit. It does not store student names, IDs, or multiple accounts.
 
 ## Source Files
@@ -81,6 +114,5 @@ loop Until the user exits
   end
 end
 ```
-
 
 

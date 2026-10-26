@@ -1,0 +1,14 @@
+{
+  "name": "legacy-accounting",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Single-account COBOL application modernized to Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
