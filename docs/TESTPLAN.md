@@ -4,6 +4,7 @@ Use this plan to validate the current COBOL application with business stakeholde
 
 The application maintains one in-memory account with an initial balance of `1000.00`. Amount and balance fields are `PIC 9(6)V99` (six integer digits and two implied decimal digits). The program has no explicit validation for zero, malformed, negative, or out-of-range amounts, and no explicit arithmetic overflow handling. Such cases are marked for characterization rather than assuming a business rule that is not present in the source.
 
+
 | Test Case ID | Test Case Description | Pre-conditions | Test Steps | Expected Result | Actual Result | Status (Pass/Fail) | Comments |
 |---|---|---|---|---|---|---|---|
 | ACCT-001 | Start with the initial account balance | Application is not running. | 1. Start the application.<br>2. Select `1. View Balance`. | The account starts at `1000.00`. The balance display is expected to show `00100000` because the numeric field has an implied decimal and is displayed without a decimal point. | To be recorded | Not run | Confirms initial state and current output formatting. |
